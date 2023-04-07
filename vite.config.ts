@@ -23,5 +23,17 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  css: {
+    preprocessorOptions: {
+      less: {
+        // 括号内才使用数学计算
+        math: "always",
+        globalVars: {
+          // 全局变量
+          mainColor: "red",
+        },
+      },
+    },
   }
 })

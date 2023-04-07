@@ -8,8 +8,8 @@ const components = {
   Sider
 }
 
-const isCollapse = ref(true)
-const msg = ref('home')
+const isCollapse = ref(false)
+
 </script>
 
 <template>
@@ -21,7 +21,6 @@ const msg = ref('home')
       <el-header class="header">
         <el-icon>
           <Fold v-show="!isCollapse" />
-
         </el-icon>
       </el-header>
       <el-main class="main">
@@ -31,9 +30,13 @@ const msg = ref('home')
   </el-container>
 </template>
 
-<style scoped>
+<style lang="less" scoped>
 .common-layout {
   height: 100%;
+
+  .aside {
+    width: 150px;
+  }
 }
 
 .header {
