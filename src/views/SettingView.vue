@@ -2,6 +2,7 @@
 import { ref } from "vue"
 import { ElMessage } from 'element-plus'
 
+// defineProps<{ msg: string }>();
 
 
 </script>

@@ -60,7 +60,7 @@ const login = (formEl: FormInstance | undefined) => {
 
 <template>
     <el-form ref="loginFormRef" class="login-form" :model="loginForm" :logins="rules" size="large" status-icon>
-        <p class="logo">Elysia</p>
+        <p class="logo">PARDO</p>
         <el-form-item label="账户" prop="username">
             <el-input v-model="loginForm.username" type="username" autocomplete="off" />
         </el-form-item>
