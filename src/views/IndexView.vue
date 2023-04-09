@@ -8,28 +8,40 @@ const components = {
   Sider,
   Header
 }
-const isCollapse = ref(false)
 </script>
 
 <template>
-  <el-container class="common-layout">
-    <el-aside class="aside">
-      <Sider :isCollapse="isCollapse" />
-    </el-aside>
-    <el-container class="content">
-      <el-main class="main">
+  <div class="container">
+    <Sider />
+    <div class="content">
+      <Header />
+      <div class="main">
         <RouterView />
-      </el-main>
-    </el-container>
-  </el-container>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style lang="less" scoped>
-.common-layout {
+.container {
+  display: flex;
+  width: 100%;
   height: 100%;
+  background-color: #f4f6f9;
 
-  .aside {
-    width: 200px;
+  .content {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    .header {
+      height: 200px;
+    }
+
+    .main {
+      background-color: transparent;
+    }
   }
+
 }
 </style>
