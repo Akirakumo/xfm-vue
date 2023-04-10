@@ -33,12 +33,15 @@ const components = {
     flex: 1 0 auto;
     display: flex;
     flex-direction: column;
+    align-items: center;
 
     .header {
-      height: 200px;
+      width: 100%;
+      margin-bottom: -30px;
     }
 
     .main {
+      width: 90%;
       background-color: transparent;
     }
   }

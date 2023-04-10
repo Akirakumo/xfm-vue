@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, reactive, defineProps } from 'vue'
-import { Notebook, Menu as IconMenu, House, VideoPlay, Headset, Setting } from '@element-plus/icons-vue'
+import { Notebook, Folder, House, VideoPlay, Headset, Setting } from '@element-plus/icons-vue'
 import { useStore } from '@/stores/index'
 
 const store = useStore()
@@ -23,37 +23,43 @@ const list = reactive({
 </script>
 
 <template>
-    <el-menu class="sider" default-active="1" width="200px" :collapse="store.isCollapse" @open="handleOpen"
-        @close="handleClose">
+    <el-menu class="sider" default-active="home" router width="200px" :collapse="store.isCollapse" popper-effect="light"
+        @open="handleOpen" @close="handleClose">
         <div class="logo">
             <img src="@/assets/icon/帕朵菲莉丝_拖走.png">
             <span v-show="!store.isCollapse">Pardo</span>
         </div>
-        <el-menu-item index="1">
+        <el-menu-item index="home">
             <el-icon>
                 <House />
             </el-icon>
             <template #title>HOME</template>
         </el-menu-item>
-        <el-menu-item index="2">
+        <el-menu-item index="comic">
             <el-icon>
                 <Notebook />
             </el-icon>
             <template #title>COMIC</template>
         </el-menu-item>
-        <el-menu-item index="3">
+        <el-menu-item index="video">
             <el-icon>
                 <VideoPlay />
             </el-icon>
             <template #title>VIDEO</template>
         </el-menu-item>
-        <el-menu-item index="4">
+        <el-menu-item index="music">
             <el-icon>
                 <Headset />
             </el-icon>
             <template #title>MUSIC</template>
         </el-menu-item>
-        <el-menu-item index="5">
+        <el-menu-item index="storage">
+            <el-icon>
+                <Folder />
+            </el-icon>
+            <template #title>STORAGE</template>
+        </el-menu-item>
+        <el-menu-item index="setting">
             <el-icon>
                 <Setting />
             </el-icon>

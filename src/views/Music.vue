@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import { ref } from "vue"
 import { ElMessage } from 'element-plus'
+import PageHeader from "@/components/PageHeader.vue";
 
 // defineProps<{ msg: string }>();
 
 
 </script>
 
-<template></template>
+<template>
+    <PageHeader>
+        <template #title>MUSIC</template>
+    </PageHeader>
+</template>
 
 <style></style>

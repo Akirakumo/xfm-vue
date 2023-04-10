@@ -7,8 +7,11 @@ export const useStore = defineStore('store', () => {
     isCollapse.value = !isCollapse.value
   }
 
+  const isGoBack = ref(true)
+
   return {
     isCollapse,
     siderCollapse,
+    isGoBack
   }
 })

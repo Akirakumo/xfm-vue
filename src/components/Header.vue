@@ -1,13 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useStore } from '@/stores/index'
-import { Fold } from '@element-plus/icons-vue'
+import { Switch } from '@element-plus/icons-vue'
 
 const store = useStore()
-
-const goBack = () => {
-    console.log('go back')
-}
 
 </script>
 
@@ -16,23 +12,20 @@ const goBack = () => {
         <div class="banner">
             <div class="sider-collapse" @click="store.siderCollapse">
                 <el-icon class="icon">
-                    <Fold />
+                    <Switch />
                 </el-icon>
             </div>
         </div>
-        <el-page-header @back="goBack">
-            <template #content>
-                <span class="text-large font-600 mr-3"> Title </span>
-            </template>
-        </el-page-header>
     </div>
 </template>
 
 <style lang="less" scoped>
 .header {
+    position: relative;
+
     .banner {
         position: relative;
-        height: 115px;
+        height: 80px;
         background-color: #6777ef;
     }
 
@@ -48,7 +41,5 @@ const goBack = () => {
             color: #fff;
         }
     }
-
-
 }
 </style>
