@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue"
 import { ElMessage } from 'element-plus'
-import PageHeader from "@/components/PageHeader.vue";
+import Navigate from "@/components/Navigate.vue";
 
 // defineProps<{ msg: string }>();
 
@@ -9,9 +9,9 @@ import PageHeader from "@/components/PageHeader.vue";
 </script>
 
 <template>
-    <PageHeader>
+    <Navigate>
         <template #title>MUSIC</template>
-    </PageHeader>
+    </Navigate>
 </template>
 
 <style></style>

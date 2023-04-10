@@ -2,16 +2,16 @@
 import { ref } from "vue"
 import { ElMessage } from 'element-plus'
 import { useStore } from '@/stores/index'
-import PageHeader from "@/components/PageHeader.vue";
+import Navigate from "@/components/Navigate.vue";
 
 const store = useStore()
 
 </script>
 
 <template>
-    <PageHeader>
+    <Navigate>
         <template #title>HOME</template>
-    </PageHeader>
+    </Navigate>
     <el-card class="box-card">
         <template #header>
             <div class="card-header">
