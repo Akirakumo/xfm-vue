@@ -4,10 +4,6 @@ import { RouterView } from 'vue-router'
 import Sider from '../components/Sider.vue'
 import Header from '../components/Header.vue'
 
-const components = {
-  Sider,
-  Header
-}
 </script>
 
 <template>
@@ -41,7 +37,8 @@ const components = {
     }
 
     .main {
-      width: 90%;
+      width: 100%;
+      padding: 0 20px;
       background-color: transparent;
     }
   }

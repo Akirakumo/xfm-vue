@@ -32,8 +32,7 @@ const store = useStore()
     .sider-collapse {
         position: absolute;
         left: 15px;
-        top: 50%;
-        transform: translateY(-50%);
+        top: 15px;
         cursor: pointer;
 
         .icon {

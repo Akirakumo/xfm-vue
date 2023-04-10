@@ -10,6 +10,8 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Aside: typeof import('./src/components/Aside.vue')['default']
+    Card: typeof import('./src/components/Card.vue')['default']
+    EChartLine: typeof import('./src/components/EChartLine.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
@@ -38,6 +40,7 @@ declare module '@vue/runtime-core' {
     IconEcosystem: typeof import('./src/components/icons/IconEcosystem.vue')['default']
     IconSupport: typeof import('./src/components/icons/IconSupport.vue')['default']
     IconTooling: typeof import('./src/components/icons/IconTooling.vue')['default']
+    Line: typeof import('./src/components/Line.vue')['default']
     Navigate: typeof import('./src/components/Navigate.vue')['default']
     Navigation: typeof import('./src/components/Navigation.vue')['default']
     PageHeader: typeof import('./src/components/PageHeader.vue')['default']

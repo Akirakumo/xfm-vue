@@ -27,7 +27,7 @@ const goBack = () => {
     height: 55px;
     width: 100%;
     padding: 0 15px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.03);
