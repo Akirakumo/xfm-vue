@@ -8,13 +8,18 @@ import { get } from '@/api/index'
 
 const router = useRouter()
 const store = useStore()
+
 // 登录判断
 const isLogin = localStorage.getItem('isLogin')
-if (isLogin != 'true') router.push('/login')
+isLogin === 'true' ? router.push('/home') : router.push('/login')
 
 get('/wslink', undefined)
   .then(data => {
     console.log(data);
+  })
+  .catch(err => {
+    console.log(err);
+
   })
 
 
