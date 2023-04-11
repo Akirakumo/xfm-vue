@@ -1,8 +1,22 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { RouterView } from 'vue-router'
-import Sider from '../components/Sider.vue'
-import Header from '../components/Header.vue'
+import { useRouter, RouterView } from 'vue-router'
+import Sider from '@/components/Sider.vue'
+import Header from '@/components/Header.vue'
+import { useStore } from '@/stores/index'
+import { get } from '@/api/index'
+
+const router = useRouter()
+const store = useStore()
+// 登录判断
+const isLogin = localStorage.getItem('isLogin')
+if (isLogin != 'true') router.push('/login')
+
+get('/wslink', undefined)
+  .then(data => {
+    console.log(data);
+  })
+
 
 </script>
 

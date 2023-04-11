@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
+import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
 import { get } from '../api/index'
 
 const router = useRouter()
 const isLogin = localStorage.getItem('isLogin')
-
 if (isLogin === 'true') router.push('/home')
 
 const loginFormRef = ref<FormInstance>()
@@ -45,11 +45,18 @@ const login = (formEl: FormInstance | undefined) => {
     if (!formEl) return
     formEl.validate((valid) => {
         if (valid) {
-            // get('/login', { username: '', password: '' }).then((data) => {
-            router.push('/home')
-            // }).catch(err => {
-
-            // })
+            get('/login', loginForm)
+                .then(data => {
+                    console.log('登陆成功', data)
+                    localStorage.setItem('isLogin', 'true')
+                    router.push('/home')
+                }).catch(err => {
+                    ElMessage({
+                        showClose: true,
+                        message: '用户名或验证码错误',
+                        type: 'error',
+                    })
+                })
         } else {
             console.log('error submit!')
             return false

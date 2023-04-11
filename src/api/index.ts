@@ -6,7 +6,7 @@ interface Params {
 
 export const path: string = 'http://localhost:8081'
 
-export const get = (url: string, params: Params) => {
+export const get = (url: string, params: any): Promise<any> => {
   return new Promise((resolve, reject) => {
     axios
       .get(`${path}${url}`, { params })

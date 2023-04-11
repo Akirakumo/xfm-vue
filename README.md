@@ -1,46 +1,30 @@
-# vue3-ts-cli
+# About
 
-This template should help get you started developing with Vue 3 in Vite.
+此项目是 vue + element-ui 构建的资源管理系统，是后台项目[xfm-server](https://github.com/Akirakumo/xfm-server) 的管理系统，所有的数据都通过后台服务获取。
 
-## Recommended IDE Setup
+## 技术栈
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+vue3 + pinia + vue-router + vite + ES6/7 + less + element-ui
 
-## Type Support for `.vue` Imports in TS
+## 项目运行
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+```
+git clone https://github.com/Akirakumo/xfm-vue
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+cd xfm-vue  
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
 npm install
-```
 
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
+
 ```
 
-### Type-Check, Compile and Minify for Production
+# 功能列表
 
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+- [ ] 登陆
+- [ ] 硬件监控
+- [ ] 文件浏览
+- [ ] 漫画
+- [ ] 音乐
+- [ ] 视频
+- [ ] 配置
