@@ -8,10 +8,6 @@ import Navigate from "@/components/Navigate.vue";
 
 </script>
 
-<template>
-    <Navigate>
-        <template #title>SETTING</template>
-    </Navigate>
-</template>
+<template></template>
 
 <style></style>

@@ -29,47 +29,76 @@ getSystemInfo().then(res => {
 
 <template>
     <div class="home">
-        <div class="left">
-            <!-- <Card>
-                                                                                                                                                                                                                                    <template #icon>
-                                                                                                                                                                                                                                        <Clock />
-                                                                                                                                                                                                                                    </template>
-                                                                                                                                                                                                                                    <template #title>系统信息</template>
-                                                                                                                                                                                                                                    <template #content>
-                                                                                                                                                                                                                                        <EChartLine />
-                                                                                                                                                                                                                                        {{ state.systemInfo }}
-                                                                                                                                                                                                                                    </template>
-                                                                                                                                                                                                                                </Card> -->
+        <div class="list">
+            <Card>
+                <template #icon>
+                    <Clock />
+                </template>
+                <template #title>系统信息</template>
+                <template #content>
+                    {{ state.systemInfo }}
+                </template>
+            </Card>
+            <Card>
+                <template #icon>
+                    <Clock />
+                </template>
+                <template #title>系统信息</template>
+                <template #content>
+                    {{ state.systemInfo }}
+                </template>
+            </Card>
+            <Card>
+                <template #icon>
+                    <Clock />
+                </template>
+                <template #title>系统信息</template>
+                <template #content>
+                    <EChartLine />
+                </template>
+            </Card>
+            <Card>
+                <template #icon>
+                    <Clock />
+                </template>
+                <template #title>系统信息</template>
+                <template #content>
+                    {{ state.systemInfo }}
+                </template>
+            </Card>
         </div>
-        <div class="right">
-            <!-- <Card>
-                                                                                                                                                                                                                                    <template #icon>
-                                                                                                                                                                                                                                        <Clock />
-                                                                                                                                                                                                                                    </template>
-                                                                                                                                                                                                                                    <template #title>时间</template>
-                                                                                                                                                                                                                                    <template #content>
-                                                                                                                                                                                                                                        <div class="sys-time"><span class="label">系统时间(UTC+8)：</span></div>
-                                                                                                                                                                                                                                        <div class="my-time"><span class="label">本地时间(UTC+8)：</span><span>{{ state.localTime }}</span></div>
-                                                                                                                                                                                                                                    </template>
-                                                                                                                                                                                                                                </Card> -->
+        <div class="list">
+            <Card>
+                <template #icon>
+                    <Clock />
+                </template>
+                <template #title>时间</template>
+                <template #content>
+                    <div class="sys-time"><span class="label">系统时间(UTC+8)：</span></div>
+                    <div class="my-time"><span class="label">本地时间(UTC+8)：</span><span>{{ state.localTime }}</span></div>
+                </template>
+            </Card>
+            <Card>
+                <template #icon>
+                    <Clock />
+                </template>
+                <template #title>系统信息</template>
+                <template #content>
+                    {{ state.systemInfo }}
+                </template>
+            </Card>
         </div>
     </div>
 </template>
 
-<style lang="less" scoped>
+<style lang="less">
 .home {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 20px;
 
-    .left {
-        width: 70%;
-        height: 1800px;
-        background-color: #eee;
+    .list>.card {
+        margin-bottom: 20px;
     }
-
-    .right {
-        width: 30%;
-        height: 500px;
-        background-color: #bfa;
-    }
-
 }
 </style>

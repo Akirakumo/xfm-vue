@@ -48,7 +48,7 @@ isLogin === 'true' ? router.push('/home') : router.push('/login')
 
     .content {
       position: absolute;
-      top: 150px;
+      top: 125px;
       bottom: 0;
       width: 100%;
       padding: 0 20px;

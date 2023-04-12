@@ -17,7 +17,7 @@ const store = useStore()
                 </el-icon>
             </div>
         </div>
-        <Navigate />
+        <Navigate class="nav" />
     </div>
 </template>
 
@@ -29,23 +29,25 @@ const store = useStore()
         position: relative;
         height: 80px;
         background-color: #6777ef;
-    }
 
-    .sider-collapse {
-        position: absolute;
-        left: 15px;
-        top: 15px;
-        cursor: pointer;
+        .sider-collapse {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            cursor: pointer;
 
-        .icon {
-            font-size: 24px;
-            color: #fff;
+            .icon {
+                font-size: 24px;
+                color: #fff;
+            }
         }
+
+
     }
 
-    .right {
-        position: absolute;
-        right: 0px;
+    .nav {
+        margin: -25px 20px 0;
     }
+
 }
 </style>
