@@ -1,4 +1,4 @@
-export default class WsConect {
+export default class WsConnect {
 
     constructor(url: string) {
         this.url = url
@@ -6,7 +6,7 @@ export default class WsConect {
 
     private url = ''
 
-    private ws: any = new WebSocket(this.url)
+    private ws = new WebSocket(this.url)
 
     // ws.onopen = (mevt) => {
     //     console.log('客户端已连接')
