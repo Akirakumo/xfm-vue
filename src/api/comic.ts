@@ -1,9 +1,9 @@
 import xhr from '@/request/xhr'
 
-export const login = (params = {}) => {
+export const getComicList = (params = {}) => {
     return xhr({
-        url: '/user/login',
-        method: 'post',
+        url: '/comic/list',
+        method: 'get',
         params: {
             ...params
         }

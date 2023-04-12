@@ -8,7 +8,6 @@ import { useStore } from '@/stores/index'
 const router = useRouter()
 const store = useStore()
 
-// 登录判断
 const isLogin = localStorage.getItem('isLogin')
 isLogin === 'true' ? router.push('/home') : router.push('/login')
 
@@ -17,9 +16,9 @@ isLogin === 'true' ? router.push('/home') : router.push('/login')
 <template>
   <div class="container">
     <Sider />
-    <div class="content">
-      <Header />
-      <div class="main">
+    <div class="main">
+      <Header class="header" />
+      <div class="content">
         <RouterView />
       </div>
     </div>
@@ -27,27 +26,34 @@ isLogin === 'true' ? router.push('/home') : router.push('/login')
 </template>
 
 <style lang="less" scoped>
+@h: 100vh - 150px;
+
 .container {
   display: flex;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: #f4f6f9;
 
-  .content {
+  .main {
+    position: relative;
     flex: 1 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 
     .header {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      margin-bottom: -30px;
+      z-index: 1;
     }
 
-    .main {
+    .content {
+      position: absolute;
+      top: 150px;
+      bottom: 0;
       width: 100%;
       padding: 0 20px;
-      background-color: transparent;
+      box-sizing: border-box;
+      overflow: auto;
     }
   }
 

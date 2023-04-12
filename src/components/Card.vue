@@ -29,6 +29,8 @@ console.log(props.type);
 
 <style lang="less" scoped>
 .card {
+    width: auto;
+
     .card-header {
         display: flex;
         align-items: center;

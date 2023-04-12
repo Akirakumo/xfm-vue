@@ -23,7 +23,7 @@ const list = reactive({
 </script>
 
 <template>
-    <el-menu class="sider" default-active="home" router width="200px" :collapse="store.isCollapse" popper-effect="light"
+    <el-menu class="sider" default-active="home" router :collapse="store.isCollapse" popper-effect="light"
         @open="handleOpen" @close="handleClose">
         <div class="logo">
             <img src="@/assets/icon/帕朵菲莉丝_拖走.png">
@@ -70,7 +70,6 @@ const list = reactive({
 
 <style lang="less" scoped>
 .sider {
-    height: 100%;
     border-right: 0;
     box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.03);
 

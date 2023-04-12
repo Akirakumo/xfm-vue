@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useStore } from '@/stores/index'
 import { Switch } from '@element-plus/icons-vue'
+import Navigate from '@/components/Navigate.vue'
 
 const store = useStore()
 
@@ -16,6 +17,7 @@ const store = useStore()
                 </el-icon>
             </div>
         </div>
+        <Navigate />
     </div>
 </template>
 
@@ -39,6 +41,11 @@ const store = useStore()
             font-size: 24px;
             color: #fff;
         }
+    }
+
+    .right {
+        position: absolute;
+        right: 0px;
     }
 }
 </style>
