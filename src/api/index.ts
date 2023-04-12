@@ -4,12 +4,12 @@ interface Params {
   [propName: string]: any
 }
 
-export const path: string = 'http://localhost:8081'
+export const path: string = 'http://127.0.0.1:8081'
 
-export const get = (url: string, params: any): Promise<any> => {
+export const get = (url: string, params = {}): Promise<any> => {
   return new Promise((resolve, reject) => {
     axios
-      .get(`${path}${url}`, { params })
+      .get(`${path}${url}`, params)
       .then((res) => {
         if (res.status === 200) resolve(res.data);
       })

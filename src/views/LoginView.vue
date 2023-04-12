@@ -3,7 +3,7 @@ import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
-import { get } from '../api/index'
+import { login as userLogin } from '../api/user'
 
 const router = useRouter()
 const isLogin = localStorage.getItem('isLogin')
@@ -45,7 +45,7 @@ const login = (formEl: FormInstance | undefined) => {
     if (!formEl) return
     formEl.validate((valid) => {
         if (valid) {
-            get('/login', loginForm)
+            userLogin(loginForm)
                 .then(data => {
                     console.log('登陆成功', data)
                     localStorage.setItem('isLogin', 'true')
