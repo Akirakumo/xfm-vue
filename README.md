@@ -1,6 +1,6 @@
 # About
 
-此项目是 vue + element-ui 构建的资源管理系统，是后台项目[xfm-server](https://github.com/Akirakumo/xfm-server) 的管理系统，所有的数据都通过后台服务获取。
+此项目是 vue + element-ui 构建的资源管理系统，是项目[xfm-server](https://github.com/Akirakumo/xfm-server) 的管理系统，所有的数据都通过后台服务获取。
 
 ## 技术栈
 

@@ -30,6 +30,7 @@ console.log(props.type);
 <style lang="less" scoped>
 .card {
     width: auto;
+    cursor: pointer;
 
     .card-header {
         display: flex;

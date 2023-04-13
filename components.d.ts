@@ -10,10 +10,13 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Aside: typeof import('./src/components/Aside.vue')['default']
+    Calendar: typeof import('./src/components/Calendar.vue')['default']
     Card: typeof import('./src/components/Card.vue')['default']
     EChartLine: typeof import('./src/components/EChartLine.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElButtonGroup: typeof import('element-plus/es')['ElButtonGroup']
+    ElCalendar: typeof import('element-plus/es')['ElCalendar']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
     ElContainer: typeof import('element-plus/es')['ElContainer']
