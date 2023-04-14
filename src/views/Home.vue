@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { ref, reactive, onMounted } from "vue"
+import { ref, reactive, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
-import { Clock } from '@element-plus/icons-vue'
+import { Clock, Cpu, Histogram } from '@element-plus/icons-vue'
 import Card from '@/components/Card.vue'
 import EChartLine from '@/components/EChartLine.vue'
 import Calendar from '@/components/Calendar.vue'
 import { useStore } from '@/stores/index'
-import { getSystemInfo } from "@/api/system"
+import { getSystemInfo } from '@/api/system'
 
 
 const store = useStore()
@@ -24,7 +24,9 @@ const updata_time = () => {
 updata_time()
 
 getSystemInfo().then(res => {
+    console.log(res.data)
     state.systemInfo = res.data
+
 })
 
 </script>
@@ -34,18 +36,23 @@ getSystemInfo().then(res => {
         <div class="list">
             <Card>
                 <template #icon>
-                    <Clock />
+                    <Cpu />
                 </template>
                 <template #title>系统信息</template>
                 <template #content>
-                    {{ state.systemInfo }}
+                    <ul>
+                        <li v-for="(item, index) in Object.entries(state.systemInfo)" :key="index">
+                            <span>{{ item[0] }} : </span>
+                            <span>{{ item[1] }}</span>
+                        </li>
+                    </ul>
                 </template>
             </Card>
             <Card>
                 <template #icon>
-                    <Clock />
+                    <Histogram />
                 </template>
-                <template #title>系统信息</template>
+                <template #title>系统监控</template>
                 <template #content>
                     <EChartLine />
                 </template>
