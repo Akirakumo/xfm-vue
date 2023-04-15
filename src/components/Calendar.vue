@@ -66,6 +66,7 @@ const selectDate = (val: string) => {
             td {
                 border: none;
                 height: 30px;
+                color: #606266;
 
                 .el-calendar-day {
                     display: flex;

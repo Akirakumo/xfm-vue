@@ -4,9 +4,11 @@
 
 ## 技术栈
 
-vue3 + pinia + vue-router + vite + ES6/7 + less + element-ui
+vue3 + pinia + vue-router + vite + ES6/7 + typeScript + less + element-ui
 
 ## 项目运行
+
+接口请求依赖后台项目，启动前先运行[xfm-server](https://github.com/Akirakumo/xfm-server)
 
 ```
 git clone https://github.com/Akirakumo/xfm-vue
