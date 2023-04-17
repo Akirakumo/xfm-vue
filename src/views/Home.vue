@@ -69,6 +69,7 @@ getSystemInfo().then(res => {
                 <template #title>系统监控</template>
                 <template #content>
                     <EChartLine />
+                    <EChartLine />
                 </template>
             </Card>
         </div>

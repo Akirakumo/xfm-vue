@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import * as echarts from 'echarts';
+import * as echarts from 'echarts'
 
-type EChartsOption = echarts.EChartsOption;
+type EChartsOption = echarts.EChartsOption
 
 const option: EChartsOption = {
     color: ['#00DDFF', '#80FFA5', '#FFBF00', '#37A2FF', '#FF0087'],
@@ -103,24 +103,23 @@ const option: EChartsOption = {
     ]
 };
 
-onMounted(() => {
-    const chartDom = document.getElementById('main')
+const lineChartDom = ref()
 
-    if (chartDom) {
-        const lineChart = echarts.init(chartDom)
+onMounted(() => {
+    if (lineChartDom.value) {
+        const lineChart = echarts.init(lineChartDom.value)
         option && lineChart.setOption(option)
     }
 })
 
-
 </script>
 
 <template>
-    <div id="main"></div>
+    <div ref="lineChartDom" class="line-chart"></div>
 </template>
 
 <style lang="less" scoped>
-#main {
+.line-chart {
     width: 100%;
     height: 300px;
 }
