@@ -9,3 +9,13 @@ export const getSystemInfo = (params = {}) => {
         }
     })
 }
+
+export const getSystemUsage = (params = {}) => {
+    return xhr({
+        url: '/system/usage',
+        method: 'get',
+        params: {
+            ...params
+        }
+    })
+}

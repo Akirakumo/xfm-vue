@@ -2,6 +2,15 @@
 import { ref, onMounted } from 'vue'
 import * as echarts from 'echarts'
 
+interface Data {
+    cpuUsage: any[],
+    memUsage: any[]
+}
+
+const props = defineProps<{
+    data: Data
+}>()
+
 type EChartsOption = echarts.EChartsOption
 
 const option: EChartsOption = {
@@ -57,22 +66,22 @@ const option: EChartsOption = {
             },
             showSymbol: false,
             areaStyle: {
-                opacity: 0.4,
+                opacity: 0.8,
                 color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
                     {
                         offset: 0,
-                        color: 'rgb(0, 221, 255)'
+                        color: 'rgb(77, 119, 255)'
                     },
                     {
                         offset: 1,
-                        color: 'rgb(77, 119, 255)'
+                        color: 'rgb(0, 221, 255)'
                     }
                 ])
             },
             emphasis: {
                 focus: 'series'
             },
-            data: [43.3, 85.8, 93.7, 33, 100, 55]
+            data: props.data.cpuUsage
         },
         {
             name: '内存',
@@ -83,22 +92,22 @@ const option: EChartsOption = {
             },
             showSymbol: false,
             areaStyle: {
-                opacity: 0.6,
-                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                opacity: 0.4,
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 0.2, [
                     {
                         offset: 0,
-                        color: 'rgb(128, 255, 165)'
-                    },
-                    {
-                        offset: 1,
                         color: 'rgb(1, 191, 236)'
-                    }
+                    },
+                    // {
+                    //     offset: 1,
+                    //     color: 'rgb(128, 255, 165)'
+                    // }
                 ])
             },
             emphasis: {
                 focus: 'series'
             },
-            data: [83.1, 73.4, 55.1, 55, 55, 60]
+            data: props.data.memUsage
         }
     ]
 };
@@ -108,7 +117,9 @@ const lineChartDom = ref()
 onMounted(() => {
     if (lineChartDom.value) {
         const lineChart = echarts.init(lineChartDom.value)
-        option && lineChart.setOption(option)
+        setInterval(() => {
+            option && lineChart.setOption(option, true)
+        }, 1000)
     }
 })
 

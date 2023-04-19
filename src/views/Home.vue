@@ -4,32 +4,47 @@ import { ElMessage } from 'element-plus'
 import { Clock, Cpu, Histogram, Calendar as CalendarIcon } from '@element-plus/icons-vue'
 import Card from '@/components/Card.vue'
 import EChartLine from '@/components/EChartLine.vue'
+import EChartRing from '@/components/EChartRing.vue'
 import Calendar from '@/components/Calendar.vue'
 import { useStore } from '@/stores/index'
-import { getSystemInfo } from '@/api/system'
+import { getSystemInfo, getSystemUsage } from '@/api/system'
+import { indexOf } from 'lodash'
 
-interface SystemInfoOption {
-
+interface SystemUsage {
+    cpuUsage: any[],
+    memUsage: any[]
 }
 
 const store = useStore()
 
 const localTime = ref<string>('')
-const updataTime = () => {
-    setInterval(() => {
-        localTime.value = new Date().toLocaleString()
-    }, 1000)
-}
-onMounted(() => {
-    updataTime()
-})
-
 const systemInfo = reactive<Record<any, any>>({})
+const systemUsage = reactive<SystemUsage>({
+    cpuUsage: new Array(60).fill(0),
+    memUsage: new Array(60).fill(0)
+})
 getSystemInfo().then(res => {
-    console.log(res.data)
     Object.entries(res.data).forEach(([key, value]) => {
         systemInfo[key] = value
     })
+})
+const updata = () => {
+    setInterval(() => {
+        localTime.value = new Date().toLocaleString()
+        getSystemUsage().then(res => {
+            const { data } = res
+            Object.entries(data).forEach(([key, value]) => {
+                if (['cpuUsage', 'memUsage'].indexOf(key) > -1) {
+                    systemUsage[key].pop()
+                    systemUsage[key].unshift(value)
+                }
+            })
+        })
+    }, 1000)
+}
+
+onMounted(() => {
+    updata()
 })
 
 </script>
@@ -52,7 +67,14 @@ getSystemInfo().then(res => {
                             {{ systemInfo.system }}
                             <el-tag size="small">{{ systemInfo.machine }}</el-tag>
                         </el-descriptions-item>
-                        <el-descriptions-item label="网络" class="networks-table">
+                        <el-descriptions-item label="磁盘">
+                            <el-table :data="systemInfo.driveList" size="small" :show-header="false" table-layout="auto">
+                                <el-table-column prop="mounted" label="" />
+                                <el-table-column prop="capacity" label="" />
+                                <el-table-column prop="blocks" label="" />
+                            </el-table>
+                        </el-descriptions-item>
+                        <el-descriptions-item label="网络">
                             <el-table :data="systemInfo.networks" size="small" :show-header="false" table-layout="auto">
                                 <el-table-column prop="family" label="" />
                                 <el-table-column prop="mac" label="" />
@@ -68,8 +90,8 @@ getSystemInfo().then(res => {
                 </template>
                 <template #title>系统监控</template>
                 <template #content>
-                    <EChartLine />
-                    <EChartLine />
+                    <EChartLine :data="systemUsage" />
+                    <EChartRing />
                 </template>
             </Card>
         </div>
