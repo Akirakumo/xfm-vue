@@ -37,6 +37,7 @@ const updata = () => {
     getSystemTime().then(res => {
         systemTime.value = res.data
     }).catch(err => {
+        clearInterval(timer)
         ElMessage({
             message: 'getSystemTime Error',
             type: 'error',
@@ -51,6 +52,7 @@ const updata = () => {
             }
         })
     }).catch(err => {
+        clearInterval(timer)
         ElMessage({
             message: 'getSystemUsage Error',
             type: 'error',
