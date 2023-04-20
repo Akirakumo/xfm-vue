@@ -53,7 +53,8 @@ const option: EChartsOption = {
     ],
     yAxis: [
         {
-            type: 'value'
+            type: 'value',
+            max: 100
         }
     ],
     series: [

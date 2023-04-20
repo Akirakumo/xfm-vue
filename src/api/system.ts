@@ -1,6 +1,6 @@
 import xhr from '@/request/xhr'
 
-export const getSystemInfo = (params = {}) => {
+const getSystemInfo = (params = {}) => {
     return xhr({
         url: '/system/info',
         method: 'get',
@@ -10,7 +10,7 @@ export const getSystemInfo = (params = {}) => {
     })
 }
 
-export const getSystemUsage = (params = {}) => {
+const getSystemUsage = (params = {}) => {
     return xhr({
         url: '/system/usage',
         method: 'get',
@@ -18,4 +18,9 @@ export const getSystemUsage = (params = {}) => {
             ...params
         }
     })
+}
+
+export {
+    getSystemInfo,
+    getSystemUsage
 }

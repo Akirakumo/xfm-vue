@@ -1,6 +1,6 @@
 import xhr from '@/request/xhr'
 
-export const login = (params = {}) => {
+const login = (params = {}) => {
     return xhr({
         url: '/user/login',
         method: 'post',
@@ -8,4 +8,8 @@ export const login = (params = {}) => {
             ...params
         }
     })
+}
+
+export {
+    login
 }
