@@ -5,7 +5,6 @@ const props = defineProps<{
     type?: string
 }>()
 
-console.log(props.type);
 
 </script>
 

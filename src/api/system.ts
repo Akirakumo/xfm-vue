@@ -20,7 +20,18 @@ const getSystemUsage = (params = {}) => {
     })
 }
 
+const getSystemTime = (params = {}) => {
+    return xhr({
+        url: '/system/time',
+        method: 'get',
+        params: {
+            ...params
+        }
+    })
+}
+
 export {
     getSystemInfo,
-    getSystemUsage
+    getSystemUsage,
+    getSystemTime
 }

@@ -8,9 +8,11 @@ import { login as userLogin } from '../api/user'
 const router = useRouter()
 
 // 检查登录信息自动跳转
-if (localStorage.getItem('isLogin') === 'true') router.push('/home')
+if (localStorage.getItem('isLogin') != '') router.push('/home')
 
 const loginFormRef = ref<FormInstance>()
+const isLogin = ref(false)
+const loginBtnText = ref('登录')
 const loginForm = reactive({
     username: '',
     password: '',
@@ -48,24 +50,32 @@ const login = (formEl: FormInstance | undefined) => {
     if (!formEl) return
     formEl.validate(valid => {
         if (valid) {
+            isLogin.value = true
+            loginBtnText.value = '登录中'
             userLogin(loginForm)
-                .then(data => {
+                .then(res => {
+                    const { data } = res
                     ElMessage({
-                        showClose: false,
                         message: '登录成功',
                         type: 'success',
                     })
-                    localStorage.setItem('isLogin', 'true')
+                    localStorage.setItem('isLogin', data.token)
                     router.push('/home')
                 }).catch(err => {
                     ElMessage({
-                        showClose: true,
-                        message: '用户名或验证码错误',
+                        message: err,
                         type: 'error',
                     })
+                }).finally(() => {
+                    isLogin.value = false
+                    loginBtnText.value = '登录'
                 })
         } else {
-            console.log('error submit!')
+            ElMessage({
+                showClose: true,
+                message: 'Submit Error',
+                type: 'error',
+            })
             return false
         }
     })
@@ -86,7 +96,8 @@ const login = (formEl: FormInstance | undefined) => {
                 <el-checkbox label="记住我" name="type" v-model="loginForm.remember" />
             </el-form-item>
             <el-form-item class="login-form-btn-box">
-                <el-button class="login-form-btn" type="primary" @click="login(loginFormRef)">登录</el-button>
+                <el-button class="login-form-btn" type="primary" :loading="isLogin" :disabled="isLogin"
+                    @click="login(loginFormRef)">{{ loginBtnText }}</el-button>
             </el-form-item>
         </el-form>
     </el-card>

@@ -4,6 +4,12 @@ import { Base64 } from 'js-base64'
 
 const { baseURL, timeout, whiteListApi, secretId } = globalConfig
 
+interface BaseResponse {
+    code: Number,
+    msg: string,
+    data: any
+}
+
 const xhr = axios.create({
     baseURL,
     timeout,
@@ -43,7 +49,7 @@ xhr.interceptors.response.use(res => {
     }
     return res.data;
 }, error => {
-    return Promise.reject(new Error(error))
+    return Promise.reject(new Error(error.message))
 })
 
 export default xhr

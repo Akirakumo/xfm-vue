@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, reactive, onMounted } from 'vue'
+import { ref, reactive, onMounted, onUnmounted } from 'vue'
 import { ElMessage } from 'element-plus'
 import { Clock, Cpu, Histogram, Calendar as CalendarIcon } from '@element-plus/icons-vue'
 import Card from '@/components/Card.vue'
@@ -7,7 +7,7 @@ import EChartLine from '@/components/EChartLine.vue'
 import EChartRing from '@/components/EChartRing.vue'
 import Calendar from '@/components/Calendar.vue'
 import { useStore } from '@/stores/index'
-import { getSystemInfo, getSystemUsage } from '@/api/system'
+import { getSystemInfo, getSystemUsage, getSystemTime } from '@/api/system'
 import { indexOf } from 'lodash'
 
 interface SystemUsage {
@@ -17,34 +17,53 @@ interface SystemUsage {
 
 const store = useStore()
 
-const localTime = ref<string>('')
-const systemInfo = reactive<Record<any, any>>({})
+let timer: any = null;
+const localTime = ref<string>('');
+const systemTime = ref<string>('');
+const systemInfo = reactive<Record<any, any>>({});
 const systemUsage = reactive<SystemUsage>({
     cpuUsage: new Array(60).fill(0),
     memUsage: new Array(60).fill(0)
-})
+});
+
 getSystemInfo().then(res => {
     Object.entries(res.data).forEach(([key, value]) => {
         systemInfo[key] = value
     })
 })
+
 const updata = () => {
-    setInterval(() => {
-        localTime.value = new Date().toLocaleString()
-        getSystemUsage().then(res => {
-            const { data } = res
-            Object.entries(data).forEach(([key, value]) => {
-                if (['cpuUsage', 'memUsage'].indexOf(key) > -1) {
-                    systemUsage[key].pop()
-                    systemUsage[key].unshift(value)
-                }
-            })
+    localTime.value = new Date().toLocaleString()
+    getSystemTime().then(res => {
+        systemTime.value = res.data
+    }).catch(err => {
+        ElMessage({
+            message: 'getSystemTime Error',
+            type: 'error',
         })
-    }, 1000)
+    })
+    getSystemUsage().then(res => {
+        const { data } = res
+        Object.entries(data).forEach(([key, value]) => {
+            if (['cpuUsage', 'memUsage'].indexOf(key) > -1) {
+                systemUsage[key].pop()
+                systemUsage[key].unshift(value)
+            }
+        })
+    }).catch(err => {
+        ElMessage({
+            message: 'getSystemUsage Error',
+            type: 'error',
+        })
+    })
 }
 
 onMounted(() => {
-    updata()
+    timer = setInterval(updata, 1000)
+})
+
+onUnmounted(() => {
+    clearInterval(timer)
 })
 
 </script>
@@ -91,7 +110,6 @@ onMounted(() => {
                 <template #title>系统监控</template>
                 <template #content>
                     <EChartLine :data="systemUsage" />
-                    <EChartRing />
                 </template>
             </Card>
         </div>
@@ -104,10 +122,10 @@ onMounted(() => {
                 <template #content>
                     <el-descriptions :column="1">
                         <el-descriptions-item label-class-name="large-label" label="北京时间">
-                            {{ }}
+                            {{ localTime }}
                         </el-descriptions-item>
                         <el-descriptions-item label-class-name="large-label" label="设备时间">
-                            {{ }}
+                            {{ systemTime }}
                         </el-descriptions-item>
                         <el-descriptions-item label-class-name="large-label" label="本地时间">
                             {{ localTime }}

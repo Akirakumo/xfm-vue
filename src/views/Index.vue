@@ -8,8 +8,8 @@ import { useStore } from '@/stores/index'
 const router = useRouter()
 const store = useStore()
 
-const isLogin = localStorage.getItem('isLogin')
-isLogin === 'true' ? router.push('/home') : router.push('/login')
+// 登录判断
+localStorage.getItem('isLogin') != '' ? router.push('/home') : router.push('/login')
 
 </script>
 
