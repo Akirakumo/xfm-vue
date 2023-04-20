@@ -47,8 +47,8 @@ const updata = () => {
         const { data } = res
         Object.entries(data).forEach(([key, value]) => {
             if (['cpuUsage', 'memUsage'].indexOf(key) > -1) {
-                systemUsage[key].pop()
-                systemUsage[key].unshift(value)
+                systemUsage[key].shift()
+                systemUsage[key].push(value)
             }
         })
     }).catch(err => {

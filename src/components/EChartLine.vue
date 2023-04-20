@@ -119,7 +119,7 @@ onMounted(() => {
     if (lineChartDom.value) {
         const lineChart = echarts.init(lineChartDom.value)
         setInterval(() => {
-            option && lineChart.setOption(option, true)
+            option && lineChart.setOption(option)
         }, 1000)
     }
 })
