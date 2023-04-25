@@ -4,7 +4,7 @@
 
 ## 技术栈
 
-vue3 + pinia + vue-router + vite + ES6/7 + typeScript + less + element-ui
+vue3 + pinia + vue-router + vite + ES6/7 + typeScript + less + element-ui + echarts + threejs
 
 ## 项目运行
 
@@ -25,7 +25,7 @@ npm run dev
 
 - [x] 登陆
 - [x] 硬件监控
-- [x] MMD动画
+- [ ] MMD动画
 - [ ] 文件浏览
 - [ ] 漫画
 - [ ] 音乐
