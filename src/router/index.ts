@@ -27,6 +27,11 @@ const router = createRouter({
           component: () => import('../views/Video.vue')
         },
         {
+          path: 'mmd',
+          name: 'mmd',
+          component: () => import('../views/MMD.vue')
+        },
+        {
           path: 'music',
           name: 'music',
           component: () => import('../views/Music.vue')

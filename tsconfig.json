@@ -16,6 +16,7 @@
       "element-plus/global"
     ],
     "suppressImplicitAnyIndexErrors": true,
+    "strict": false
   },
   "references": [
     {

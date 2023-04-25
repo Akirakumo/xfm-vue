@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, reactive, defineProps } from 'vue'
-import { Notebook, Folder, House, VideoPlay, Headset, Setting } from '@element-plus/icons-vue'
+import { Notebook, Folder, House, VideoPlay, Headset, Setting, VideoCamera } from '@element-plus/icons-vue'
 import { useStore } from '@/stores/index'
 
 const store = useStore()
@@ -46,6 +46,12 @@ const list = reactive({
                 <VideoPlay />
             </el-icon>
             <template #title>VIDEO</template>
+        </el-menu-item>
+        <el-menu-item index="mmd">
+            <el-icon>
+                <VideoCamera />
+            </el-icon>
+            <template #title>MMD</template>
         </el-menu-item>
         <el-menu-item index="music">
             <el-icon>
